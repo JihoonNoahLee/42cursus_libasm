@@ -6,7 +6,7 @@
 /*   By: jihoolee <jihoolee@student.42SEOUL.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:06:39 by jihoolee          #+#    #+#             */
-/*   Updated: 2023/09/17 21:18:02 by jihoolee         ###   ########.fr       */
+/*   Updated: 2023/09/17 22:22:33 by jihoolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 extern size_t	_ft_strlen(const char *s);
 extern int		_ft_strcmp(const char *s1, const char *s2);
+extern char		*_ft_strcpy(char *dest, const char *src);
 
 // void	test_strlen(void)
 // {
@@ -48,9 +49,47 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*s1 - *s2);
 }
 
+char	*strcpy(char *dest, const char *src)
+{
+	size_t	iter;
+
+	iter = 0;
+	while (src[iter])
+	{
+		dest[iter] = src[iter];
+		iter++;
+	}
+	dest[iter] = src[iter];
+	return (dest);
+}
+
+void	test_strcpy(void)
+{
+	char	dest[10];
+	char	*src;
+	int		iter;
+	
+	src = "Hello";
+	iter = 0;
+	while (iter < 10)
+	{
+		dest[iter] = '0';
+		iter++;
+	}
+	_ft_strcpy(dest, src);
+	iter = 0;
+	while (iter < 10)
+	{
+		write(STDOUT_FILENO, dest + iter, 1);
+		write(STDOUT_FILENO, "\n", 1);
+		iter++;
+	}
+}
+
 int	main(void)
 {
 	// test_strlen();
 	test_strcmp();
+	test_strcpy();
 	return (0);
 }
