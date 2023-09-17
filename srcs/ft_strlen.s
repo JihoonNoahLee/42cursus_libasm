@@ -3,13 +3,13 @@ section .text
 
 _ft_strlen:
     mov rax, 0
-    jmp count
+    jmp .count
 
-count:
+.count:
     cmp BYTE [rdi + rax], 0
-    je  end
+    je  .end
     inc rax
-    jmp count
+    jmp .count
 
-end:
+.end:
     ret
