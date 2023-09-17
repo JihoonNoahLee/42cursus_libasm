@@ -3,21 +3,21 @@ section .text
 
 ;rdi: s1, rsi: s2
 _ft_strcmp:
-    mov rcx, 0
-    jmp .compare_loop
+    MOV rcx, 0
+    JMP .COMPARE_LOOP
 
-    .compare_loop:
-        cmp BYTE [rdi + rcx], 0
-        je  .ret
-        cmp BYTE [rsi + rcx], 0
-        je  .ret
-        mov al, BYTE [rdi + rcx]
-        cmp al, BYTE [rsi + rcx]
-        je  .ret
+    .COMPARE_LOOP:
+        CMP BYTE [rdi + rcx], 0
+        JE  .RET
+        CMP BYTE [rsi + rcx], 0
+        JE  .RET
+        MOV al, BYTE [rdi + rcx]
+        CMP al, BYTE [rsi + rcx]
+        JE  .RET
         inc rcx
-        jmp .compare_loop
+        JMP .COMPARE_LOOP
 
-    .ret:
-        mov rax, [rdi + rcx]
-        sub rax, [rsi + rcx]
-        ret
+    .RET:
+        MOV rax, [rdi + rcx]
+        SUB rax, [rsi + rcx]
+        RET
