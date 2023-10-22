@@ -6,15 +6,17 @@
 /*   By: jihoolee <jihoolee@student.42SEOUL.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:06:39 by jihoolee          #+#    #+#             */
-/*   Updated: 2023/09/17 22:22:33 by jihoolee         ###   ########.fr       */
+/*   Updated: 2023/10/22 22:16:30 by jihoolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <errno.h>
 
 extern size_t	_ft_strlen(const char *s);
 extern int		_ft_strcmp(const char *s1, const char *s2);
 extern char		*_ft_strcpy(char *dest, const char *src);
+extern ssize_t	_ft_write(int fd, const void *buf, size_t count);
 
 // void	test_strlen(void)
 // {
@@ -89,7 +91,8 @@ void	test_strcpy(void)
 int	main(void)
 {
 	// test_strlen();
-	test_strcmp();
-	test_strcpy();
+	// test_strcmp();
+	// test_strcpy();
+	_ft_write(STDOUT_FILENO, "Hello World!", 13);
 	return (0);
 }
