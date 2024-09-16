@@ -1,23 +1,24 @@
 section .text
     global _ft_strcmp
 
-;rdi: s1, rsi: s2
+; int ft_strcmp(const char *s1, const char *s2);
 _ft_strcmp:
-    MOV rcx, 0
+    MOV rcx,    0
     JMP .COMPARE_LOOP
 
-    .COMPARE_LOOP:
-        CMP BYTE [rdi + rcx], 0
-        JE  .RET
-        CMP BYTE [rsi + rcx], 0
-        JE  .RET
-        MOV al, BYTE [rdi + rcx]
-        CMP al, BYTE [rsi + rcx]
-        JE  .RET
-        inc rcx
-        JMP .COMPARE_LOOP
+.COMPARE_LOOP:
+    MOV     al,             BYTE [rdi + rcx]
+    TEST    al,             BYTE [rsi + rcx]
+    JZ      .END
+    CMP al,             BYTE [rsi + rcx]
+    JNE .COMPARE_
 
-    .RET:
-        MOV rax, [rdi + rcx]
-        SUB rax, [rsi + rcx]
-        RET
+.COMPARE_LOOP_INC:
+    INC rcx
+    CMP al,             0
+    JNE .COMPARE_LOOP
+    JMP .END
+
+.END:
+    MOV rax,    rcx
+    RET

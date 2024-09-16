@@ -1,20 +1,19 @@
 section .text
     global _ft_strcpy
 
-;rdi: dest, rsi: src
+; char *ft_strcpy(char *dst, const char *src);
 _ft_strcpy:
-    MOV rcx, 0
-    MOV rax, rdi
-    JMP .LOOP
+    MOV rcx,    0
+    JMP	.COPY_LOOP
 
-    .LOOP:
-        CMP BYTE [rsi + rcx], 0
-        JE  .RET
-        MOV al, BYTE [rsi + rcx]
-        MOV BYTE [rdi + rcx], al
-        INC rcx
-        JMP .LOOP
+.COPY_LOOP:
+    MOV al,             BYTE [rsi + rcx]
+    MOV [rdi + rcx],    al
+    INC rcx
+    CMP al,             0
+    JNE .COPY_LOOP
+    JMP .END
 
-    .RET:
-        MOV BYTE [rdi + rcx], 0
-        RET
+.END:
+    MOV rax,    rdi
+    RET

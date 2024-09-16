@@ -6,25 +6,26 @@
 /*   By: jihoolee <jihoolee@student.42SEOUL.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:06:39 by jihoolee          #+#    #+#             */
-/*   Updated: 2023/10/22 22:16:30 by jihoolee         ###   ########.fr       */
+/*   Updated: 2024/09/16 21:52:27 by jihoolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <errno.h>
+#include <stdio.h>
 
-extern size_t	_ft_strlen(const char *s);
-extern int		_ft_strcmp(const char *s1, const char *s2);
-extern char		*_ft_strcpy(char *dest, const char *src);
-extern ssize_t	_ft_write(int fd, const void *buf, size_t count);
+size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char *dest, const char *src);
+/* extern int		ft_strcmp(const char *s1, const char *s2);
+extern char		*ft_strcpy(char *dest, const char *src);
+extern ssize_t	ft_write(int fd, const void *buf, size_t count);
 
-// void	test_strlen(void)
-// {
-// 	char	*msg;
+void	test_strlen(void)
+{
+	char	*msg;
 
-// 	msg = "Hello World!\n";
-// 	write(STDOUT_FILENO, msg, _ft_strlen(msg));
-// }
+	msg = "Hello World!\n";
+	write(STDOUT_FILENO, msg, _ft_strlen(msg));
+}
 
 void	test_strcmp(void)
 {
@@ -34,11 +35,11 @@ void	test_strcmp(void)
 
 	s1 = "abc";
 	s2 = "abcd";
-	if (_ft_strcmp(s1, s2))
+	if (ft_strcmp(s1, s2))
 		msg = "diff!\n";
 	else
 		msg = "same!\n";
-	write(STDOUT_FILENO, msg, _ft_strlen(msg));
+	write(STDOUT_FILENO, msg, ft_strlen(msg));
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -70,7 +71,7 @@ void	test_strcpy(void)
 	char	dest[10];
 	char	*src;
 	int		iter;
-	
+
 	src = "Hello";
 	iter = 0;
 	while (iter < 10)
@@ -78,7 +79,7 @@ void	test_strcpy(void)
 		dest[iter] = '0';
 		iter++;
 	}
-	_ft_strcpy(dest, src);
+	ft_strcpy(dest, src);
 	iter = 0;
 	while (iter < 10)
 	{
@@ -93,6 +94,44 @@ int	main(void)
 	// test_strlen();
 	// test_strcmp();
 	// test_strcpy();
-	_ft_write(STDOUT_FILENO, "Hello World!", 13);
+	ft_write(STDOUT_FILENO, "Hello World!", 13);
+	return (0);
+} */
+
+void	test_strcpy(void)
+{
+	char	dest[10];
+	char	*src;
+	int		iter;
+
+	src = "Hello";
+	iter = 0;
+	while (iter < 10)
+	{
+		dest[iter] = '0';
+		iter++;
+	}
+	ft_strcpy(dest, src);
+	iter = 0;
+	while (iter < 10)
+	{
+		write(STDOUT_FILENO, dest + iter, 1);
+		write(STDOUT_FILENO, "\n", 1);
+		iter++;
+	}
+}
+
+void	test_strlen(void)
+{
+	char	*msg;
+
+	msg = "Hello World!\n";
+	write(STDOUT_FILENO, msg, ft_strlen(msg));
+	printf("len(msg): %d\n", ft_strlen(msg));
+}
+
+int	main(void)
+{
+	test_strlen();
 	return (0);
 }
