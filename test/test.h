@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jihoolee <jihoolee@student.42SEOUL.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/01 23:06:39 by jihoolee          #+#    #+#             */
-/*   Updated: 2026/09/16 22:42:54 by jihoolee         ###   ########.fr       */
+/*   Created: 2026/09/16 22:32:20 by jihoolee          #+#    #+#             */
+/*   Updated: 2026/09/16 22:42:06 by jihoolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#ifndef TEST_H
+# define TEST_H
 
-int	main(void)
-{
-	test_strlen();
-	return (0);
-}
+void  test_strlen(void);
+
+#endif
