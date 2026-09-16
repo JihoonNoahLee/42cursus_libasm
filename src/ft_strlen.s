@@ -4,7 +4,6 @@ section .text
 ; size_t ft_strlen(const char *s);
 _ft_strlen:
     MOV rax,        0
-    JMP .COUNT_LOOP
 
 .COUNT_LOOP:
     CMP BYTE [rdi + rax], 0
